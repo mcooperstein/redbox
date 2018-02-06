@@ -206,13 +206,56 @@ $("#btn4").click(function () {
     var userSearch = $("#search").val();
     movieList.contains(userSearch);
 });
+//requires password to be able to add movie to list
+$("#add").click(function () {
+    var password = prompt("Enter the validation/permission code");
+    if (password == 1234) {
+        $('#btn5').prop("disabled", false);
+    }
+});
 //add movie to list
 $("#btn5").click(function () {
     var userAdd = $("#add").val();
-    movieList.append(userAdd);
-    moviesArr.push(userAdd);
-    console.log(movieList);
-    if ($("ol").show()) {
-        showMovies();
+    if (userAdd.length > 0) {
+        movieList.append(userAdd);
+        moviesArr.push(userAdd);
+        console.log(movieList);
+        if ($("ol").show()) {
+            showMovies();
+        }
+        $("#add").val("");
     }
-})
+
+});
+//remove movie from list
+$("#btn2").click(function () {
+    $("#listOfMovies").show();
+    setTimeout(function () {
+        var checkOut = prompt("Enter the number of the movie you would like to check out");
+        if ($("ol li:nth-child(" + checkOut + ")").hasClass("white")) {
+            alert("That movie is currently checked out/unavailable")
+        } else {
+            $("ol li:nth-child(" + checkOut + ")").addClass("white");
+            var nameOfMovie = $("ol li:nth-child(" + checkOut + ")").html();
+            movieList.remove(nameOfMovie);
+            console.log(movieList);
+        }
+    }, 250)
+});
+//insert movie back into list
+$("#btn3").click(function () {
+    $("#listOfMovies").show();
+    setTimeout(function () {
+        var returning = prompt("Enter the number of the movie that you are returning");
+        if ($("ol li:nth-child(" + returning + ")").hasClass("white")) {
+            var nameOfMovieReturned = $("ol li:nth-child(" + returning + ")").html();
+            var after = $("ol li:nth-child(" + (returning - 1) + ")").html();
+            movieList.insertAfter(after, nameOfMovieReturned);
+            $("ol li:nth-child(" + returning + ")").removeClass("white");
+        } else {
+            alert("Error: That movie is already in stock");
+        }
+        console.log(movieList);
+    }, 250)
+
+});
