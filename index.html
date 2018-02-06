@@ -10,15 +10,32 @@
 </head>
 
 <body>
+    <div id="searchAndAdd">
+        <div id="leftSearch">
+            <input type="text" id="search" placeholder="Search for a Movie">
+            <button class="btn btn-default" id="btn4">Search for a Movie</button>
+        </div>
+        <div id="rightAdd">
+            <input type="text" id="add" placeholder="Enter Name of Movie to Add to List">
+            <button class="btn btn-danger" id="btn5">Add Movie</button>
+        </div>
+    </div>
     <h1>RedBox Simulation App</h1>
+
     <div id="btnContainer">
         <button class="btn btn-primary" id="btn1">View All Movies</button>
         <button class="btn btn-success" id="btn2">Check Out a Movie</button>
         <button class="btn btn-info" id="btn3">Return a Movie</button>
     </div>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <div id="listOfMovies">
+        <ol></ol>
+    </div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="films.json"></script>
     <script src="app.js"></script>
 </body>
 
